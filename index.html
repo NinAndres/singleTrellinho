@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get It Done</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="container">
+    <nav class="navbar">
+      <span class="navbar__logo">Get It Done</span>
+      <button class="change-background-button" onclick="toggleColorPalette()">
+        <span>Change Background</span>
+        <i class="fa-solid fa-palette"></i>
+      </button>
+      <div class="colorPaletteWrapper hidden">
+        <div onclick="handleColorPaletteClick(this)" id="a">#1abc9c</div>
+        <div onclick="handleColorPaletteClick(this)" id="b">#e74c3c</div>
+        <div onclick="handleColorPaletteClick(this)" id="c">#95a5a6</div>
+        <div onclick="handleColorPaletteClick(this)" id="d">#f39c12</div>
+        <div onclick="handleColorPaletteClick(this)" id="e">#f1c40f</div>
+        <div onclick="handleColorPaletteClick(this)" id="g">#2b2b2b</div>
+      </div>
+    </nav>
+    <div class="board" id="board">
+      <div class="column" id="todo-column">
+        <h3>Para fazer</h3>
+        <div class="tasks" id="todo-tasks" draggable="true"></div>
+      </div>
+      <div class="column" id="in-progress-column">
+        <h3>Fazendo</h3>
+        <div class="tasks" id="in-progress-tasks" draggable="true"></div>
+      </div>
+      <div class="column" id="done-column">
+        <h3>Feito</h3>
+        <div class="tasks" id="done-tasks" draggable="true"></div>
+      </div>
+    </div>
+    <form id="add-task-form">
+      <label for="task-text">Nome da task</label>
+      <input type="text" id="task-text" required />
+      <label for="task-description">Descrição da task</label>
+      <input type="text" id="task-description" required />
+      <button type="submit">Adicionar</button>
+    </form>
+    <script src="main.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
