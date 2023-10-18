@@ -50,11 +50,19 @@ document.addEventListener("DOMContentLoaded", () => {
     taskElement.innerHTML = `
     <div class="task-container">
     <div>
-      <strong>${task.text}</strong>
+       <strong>${task.text}</strong>
     </div>
     <div>${task.description}</div>
+    <button class="remove-task-button" data-task-id="${task.id}">Remover</button>
     </div>
     `;
+
+    taskElement
+      .querySelector(".remove-task-button")
+      .addEventListener("click", (e) => {
+        const taskId = e.target.dataset.taskId;
+        removeTask(taskId);
+      });
 
     taskElement.addEventListener("dragstart", (e) => {
       e.dataTransfer.setData("text/plain", task.id);
@@ -134,6 +142,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       saveTasks();
+    }
+  }
+
+  function removeTask(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+
+    if (taskIndex !== -1) {
+      tasks.splice(taskIndex, 1);
+      saveTasks();
+      renderTasks();
     }
   }
 });
